@@ -3,7 +3,7 @@
   <div id="q-app">
     <header></header>
     <main>
-      <img src="~assets/quasar-logo-full.svg" alt="Quasar PWA">
+      <img src="~assets/gunthy-logo.png" alt="Gunthy">
       <router-view></router-view>
     </main>
   </div>

@@ -1,11 +1,11 @@
 <template>
   <div class="hello">
-    <h5>Welcome to your Quasar PWA</h5>
+    <h5>Welcome to Gunthy-GUI</h5>
     <ul>
-      <li><a href="http://quasar-framework.org" target="_blank" rel="noopener">Docs</a></li>
-      <li><a href="http://forum.quasar-framework.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://gitter.im/quasarframework/Lobby" target="_blank" rel="noopener">Gitter Chat</a></li>
-      <li><a href="https://twitter.com/quasarframework" target="_blank" rel="noopener">Twitter</a></li>
+      <li><a href="https://github.com/GuntharDeNiro/BTCT/wiki" target="_blank" rel="noopener">Docs</a></li>
+      <li><a href="https://gunthy.org/" target="_blank" rel="noopener">Forums</a></li>
+      <li><a href="https://github.com/GuntharDeNiro/Gunthy" target="_blank" rel="noopener">Github</a></li>
+      <li><a href="https://bitcointalk.org/index.php?topic=1715214.0" target="_blank" rel="noopener">BitcoinTalk Post</a></li>
     </ul>
   </div>
 </template>
