@@ -63,7 +63,7 @@ app.put('/gbstatus', function (req, res) {
 });
 
 app.get('/getConfig', function (req, res) {
-    var json = fs.readFileSync('config.js');
+    var json = fs.readFileSync('server/config.js');
     var decoder = new StringDecoder('utf8');
 
     json = decoder.write(json);
@@ -72,14 +72,13 @@ app.get('/getConfig', function (req, res) {
     res.send(json);
 });
 
-
 app.get('/listener', function (req, res) {
     console.log(req.params);
-    res.sendFile(__dirname + '/listener.html');
+    res.sendFile(__dirname + '/public/listener.html');
 });
 
 app.get('/listener/gethost', function( req, res) {
-    var json = fs.readFileSync('config.js', {});
+    var json = fs.readFileSync('server/config.js', {});
     var decoder = new StringDecoder('utf8');
 
     json = decoder.write(json);
@@ -90,7 +89,7 @@ app.get('/listener/gethost', function( req, res) {
 
 app.get('/listener/:exchange/:pair', function (req, res) {
     console.log(req.params);
-    var web = fs.readFileSync('listener.html', {});
+    var web = fs.readFileSync('public/listener.html', {});
     var decoder = new StringDecoder('utf8');
 
     web = decoder.write(web);
@@ -99,59 +98,10 @@ app.get('/listener/:exchange/:pair', function (req, res) {
     res.send(web);
 });
 
-app.get('/config-num', function (req, res) {
-    console.log(req.params);
-    var json = fs.readFileSync('public/config.js', {});
-    var decoder = new StringDecoder('utf8');
-
-    json = decoder.write(json);
-    json = JSON.parse(json);
-
-
-
-    for (var k in json.optionals.toOverride) {
-        if (json.optionals.toOverride.hasOwnProperty(k)) {
-
-            if(['BUY_ENABLED', 'DOUBLE_UP', 'PANIC_SELL', 'VERBOSE', 'WATCH_MODE', 'debug'].indexOf(k) >= 0) {
-
-                console.log(k, json.optionals.toOverride[k], json.optionals.toOverride[k]? 1 : 0);
-
-                json.optionals.toOverride[k] = json.optionals.toOverride[k]? 1 : 0;
-            }
-
-        }
-    }
-
-    for (k in json.pairs) {
-        if (json.pairs.hasOwnProperty(k)) {
-
-            for(var k2 in json.pairs[k]) {
-                if (json.pairs[k].hasOwnProperty(k2)) {
-
-                    for(var k3 in json.pairs[k][k2].override) {
-
-                        if (json.pairs[k][k2].override.hasOwnProperty(k3)) {
-                            if(['BUY_ENABLED', 'DOUBLE_UP', 'PANIC_SELL', 'VERBOSE', 'WATCH_MODE', 'debug'].indexOf(k3) >= 0) {
-
-
-                                json.pairs[k][k2].override[k3] = json.pairs[k][k2].override[k3]? 1 : 0;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-
-    json = JSON.stringify(json);
-    res.send(json);
-});
-
 app.get('/get_pairs/:exchange', function (req, res) {
     console.log(req.params);
 
-    var json = fs.readFileSync('config.js', {});
+    var json = fs.readFileSync('server/config.js', {});
     var decoder = new StringDecoder('utf8');
 
     json = decoder.write(json);
@@ -165,7 +115,6 @@ app.get('/get_pairs/:exchange', function (req, res) {
 
     res.send(pairs);
 });
-
 
 app.post('/updateconfig', function (req, res) {
 
@@ -225,7 +174,7 @@ app.post('/updateconfig', function (req, res) {
         }
     }
 
-    fs.writeFileSync('config.js', JSON.stringify(json, null, "\t"), 'utf-8', function(err) {
+    fs.writeFileSync('server/config.js', JSON.stringify(json, null, "\t"), 'utf-8', function(err) {
     	if (err) throw err;
     	console.log('Done!')
     });
@@ -233,13 +182,12 @@ app.post('/updateconfig', function (req, res) {
     res.send("{}");
 });
 
+app.use(express.static('server/public'));
 
-app.use(express.static('public'));
-
-    var json = fs.readFileSync('config.js', {});
-    var decoder = new StringDecoder('utf8');
-    json = decoder.write(json);
-    json = JSON.parse(json);
+var json = fs.readFileSync('server/config.js', {});
+var decoder = new StringDecoder('utf8');
+json = decoder.write(json);
+json = JSON.parse(json);
 
 app.listen(json.client.port, json.client.hostname, 511, function () {
     console.log('Gunthy listening on '+json.client.hostname+' port '+json.client.port+'!');
