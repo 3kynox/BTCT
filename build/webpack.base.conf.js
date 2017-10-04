@@ -100,7 +100,7 @@ module.exports = {
     new webpack.LoaderOptionsPlugin({
       minimize: env.prod,
       options: {
-        context: path.resolve(__dirname, '../src'),
+        context: path.resolve(__dirname, '../client/src'),
         postcss: cssUtils.postcss
       }
     }),
