@@ -1,6 +1,6 @@
 # INCOMING GUNBOT / GUI ARCHITECTURE
     
-![](https://imgur.com/2vLtCP8)
+![](https://i.imgur.com/2vLtCP8.png)
 
 # Build / Package Server :
 
