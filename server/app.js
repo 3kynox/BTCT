@@ -10,12 +10,12 @@ var gbStart;
 var gbStatus = false;
 
 function osDetection() {
-    if (process.platform == 'linux' || process.platform == 'sunos' || process.platform == 'freebsd') {
-        return './gunthy-linx64';
+    if (isPi()) {
+        return './gunthy-arm';
     } else if (process.platform == 'darwin') {
         return './gunthy-macos';
-    } else if (isPi()) {
-        return 'gunthy-arm';
+    } else {
+        return './gunthy-linx64';
     }
 }
 
@@ -241,6 +241,6 @@ app.use(express.static('public'));
     json = decoder.write(json);
     json = JSON.parse(json);
 
-app.listen(json.ws.clientport, json.ws.hostname, 511, function () {
-    console.log('Gunthy listening on '+json.ws.hostname+' port '+json.ws.clientport+'!');
+app.listen(json.client.port, json.client.hostname, 511, function () {
+    console.log('Gunthy listening on '+json.client.hostname+' port '+json.client.port+'!');
 });

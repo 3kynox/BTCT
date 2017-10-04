@@ -1,9 +1,3 @@
 node_modules
 package-lock.json
-config.js
-gunthy-arm
-gunthy-linx64
-gunthy-macos
-gunthy.exe
-tulind/
 .idea/
