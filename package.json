@@ -1,20 +1,33 @@
 {
-  "name": "gunthy-client",
-  "version": "0.0.1",
-  "description": "Gunbot webGUI",
-  "author": "eKyNoX",
+  "name": "gunthy",
+  "version": "0.1.0",
+  "description": "Gunthy",
+  "author": "@Gunthar - @eKyNoX",
+  "license": "ISC",
+  "main": "app.js",
+  "directories": {},
   "scripts": {
     "clean": "node build/script.clean.js",
     "dev": "node build/script.dev.js",
     "build": "node build/script.build.js",
-    "lint": "eslint --ext .js,.vue src"
+    "lint": "eslint --ext .js,.vue src",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "babel-runtime": "^6.25.0",
+    "body-parser": "^1.17.2",
+    "browserify-aes": "^1.0.6",
+    "bufferutil": "^3.0.2",
+    "detect-rpi": "^1.2.0",
+    "express": "^4.15.4",
+    "lodash": "^4.17.4",
     "quasar-extras": "0.x",
-    "quasar-framework": "^0.14.1",
+    "quasar-framework": "^0.14.4",
+    "tree-kill": "^1.2.0",
+    "utf-8-validate": "^3.0.3",
     "vue": "~2.3.4",
-    "vue-router": "^2.7.0"
+    "vue-router": "^2.7.0",
+    "ws": "^3.1.0"
   },
   "devDependencies": {
     "autoprefixer": "^6.4.0",
