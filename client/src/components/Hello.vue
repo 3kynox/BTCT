@@ -12,11 +12,13 @@
 </template>
 
 <script>
+import jQuery from 'jquery'
 export default {
   name: 'hello',
   methods: {
     testInterval () {
-      var gbStatus
+      let $ = jQuery
+      let gbStatus
 
       setInterval(() => {
         $.ajax({
