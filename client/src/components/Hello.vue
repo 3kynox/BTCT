@@ -7,12 +7,30 @@
       <li><a href="https://github.com/GuntharDeNiro/Gunthy" target="_blank" rel="noopener">Github</a></li>
       <li><a href="https://bitcointalk.org/index.php?topic=1715214.0" target="_blank" rel="noopener">BitcoinTalk Post</a></li>
     </ul>
+    <button @click="testInterval">Start</button>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'hello'
+  name: 'hello',
+  methods: {
+    testInterval () {
+      var gbStatus
+
+      setInterval(() => {
+        $.ajax({
+          type: 'PUT',
+          contentType: 'application/json',
+          url: '/gbstatus',
+          success: function (data) {
+            gbStatus = data
+          }
+        })
+        console.log(gbStatus)
+      }, 1000)
+    }
+  }
 }
 </script>
 
