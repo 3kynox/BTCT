@@ -63,7 +63,7 @@ app.put('/gbstatus', function (req, res) {
 });
 
 app.get('/getConfig', function (req, res) {
-    var json = fs.readFileSync('server/config.js');
+    var json = fs.readFileSync('config.js');
     var decoder = new StringDecoder('utf8');
 
     json = decoder.write(json);
@@ -78,7 +78,7 @@ app.get('/listener', function (req, res) {
 });
 
 app.get('/listener/gethost', function( req, res) {
-    var json = fs.readFileSync('server/config.js', {});
+    var json = fs.readFileSync('config.js', {});
     var decoder = new StringDecoder('utf8');
 
     json = decoder.write(json);
@@ -101,7 +101,7 @@ app.get('/listener/:exchange/:pair', function (req, res) {
 app.get('/get_pairs/:exchange', function (req, res) {
     console.log(req.params);
 
-    var json = fs.readFileSync('server/config.js', {});
+    var json = fs.readFileSync('config.js', {});
     var decoder = new StringDecoder('utf8');
 
     json = decoder.write(json);
@@ -174,7 +174,7 @@ app.post('/updateconfig', function (req, res) {
         }
     }
 
-    fs.writeFileSync('server/config.js', JSON.stringify(json, null, "\t"), 'utf-8', function(err) {
+    fs.writeFileSync('config.js', JSON.stringify(json, null, "\t"), 'utf-8', function(err) {
     	if (err) throw err;
     	console.log('Done!')
     });
@@ -182,9 +182,9 @@ app.post('/updateconfig', function (req, res) {
     res.send("{}");
 });
 
-app.use(express.static('server/public'));
+app.use(express.static('public'));
 
-var json = fs.readFileSync('server/config.js', {});
+var json = fs.readFileSync('config.js', {});
 var decoder = new StringDecoder('utf8');
 json = decoder.write(json);
 json = JSON.parse(json);
