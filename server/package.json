@@ -1,6 +1,6 @@
 {
   "name": "gunthy-server",
-  "description": "feathers / graphql server to be bundled with gunbot software including an sqlite database and linked to the client part of gunthy",
+  "description": "gunthy-gui feathers / graphql server part to be bundled with gunbot trading bot software including an sqlite database and linked to the client part of gunthy",
   "version": "0.0.0",
   "homepage": "",
   "main": "src",
@@ -8,10 +8,12 @@
     "feathers"
   ],
   "author": {
-    "name": "3kynox",
-    "email": "thierry.prost@gmail.com"
+    "name": "@GuntharDeNiro"
   },
-  "contributors": [],
+  "contributors": [
+    "@eKyNoX",
+    "@Medeeiros"
+  ],
   "bugs": {},
   "directories": {
     "lib": "src",
@@ -21,10 +23,12 @@
     "node": ">= 6.0.0",
     "npm": ">= 3.0.0"
   },
+  "babel": {"presets": ["es2015"]},
   "scripts": {
     "test": "npm run eslint && npm run mocha",
     "eslint": "eslint src/. test/. --config .eslintrc.json",
-    "start": "node src/",
+    "start": "babel-node src/",
+    "dev": "nodemon src/ --exec babel-node --presets es2015",
     "mocha": "mocha test/ --recursive --exit"
   },
   "dependencies": {
@@ -38,13 +42,19 @@
     "feathers-hooks-common": "^3.10.0",
     "feathers-rest": "^1.8.0",
     "feathers-socketio": "^2.0.0",
+    "graphql": "^0.11.7",
+    "graphql-server-express": "^1.2.0",
+    "graphql-tools": "^2.6.1",
     "helmet": "^3.9.0",
     "serve-favicon": "^2.4.5",
     "winston": "^2.4.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
     "eslint": "^4.9.0",
     "mocha": "^4.0.1",
+    "nodemon": "^1.12.1",
     "request": "^2.83.0",
     "request-promise": "^4.2.2"
   }
