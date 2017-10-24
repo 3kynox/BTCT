@@ -1,19 +1,41 @@
 // Initializes the `graphql` service on path `/graphql`
-const createService = require('./graphql.class.js');
-const hooks = require('./graphql.hooks');
-const filters = require('./graphql.filters');
+
+const graphql = require('graphql-server-express').graphqlExpress;
+const graphiql = require('graphql-server-express').graphiqlExpress;
+const makeExecutableSchema = require('graphql-tools').makeExecutableSchema;
+
+const Resolvers = require('./graphql.resolvers');
+const Schema = require('./graphql.schema');
 
 module.exports = function () {
   const app = this;
-  const paginate = app.get('paginate');
+  // const paginate = app.get('paginate');
 
-  const options = {
-    name: 'graphql',
-    paginate
-  };
+  const executableSchema = makeExecutableSchema({
+      typeDefs: Schema,
+      resolvers: Resolvers.call(app)
+  });
+
+  // const options = {
+  //   name: 'graphql',
+  //   paginate
+  // };
 
   // Initialize our service with any options it requires
-  app.use('/graphql', createService(options));
+  app.use('/graphql', graphql((req) => {
+      const {token, provider} = req.feathers;
+      return {
+          schema: executableSchema,
+          context: {
+              token,
+              provider
+          }
+      };
+  }));
+
+  app.use('/graphiql', graphiql({
+      endpointURL: '/graphql',
+  }));
 
   // Get our initialized service so that we can register hooks and filters
   const service = app.service('graphql');
