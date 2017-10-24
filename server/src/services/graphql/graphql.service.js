@@ -7,6 +7,7 @@ const makeExecutableSchema = require('graphql-tools').makeExecutableSchema;
 const Resolvers = require('./graphql.resolvers');
 const Schema = require('./graphql.schema');
 
+
 module.exports = function () {
   const app = this;
   // const paginate = app.get('paginate');
@@ -36,13 +37,4 @@ module.exports = function () {
   app.use('/graphiql', graphiql({
       endpointURL: '/graphql',
   }));
-
-  // Get our initialized service so that we can register hooks and filters
-  const service = app.service('graphql');
-
-  service.hooks(hooks);
-
-  if (service.filter) {
-    service.filter(filters);
-  }
 };
