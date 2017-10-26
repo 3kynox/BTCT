@@ -48,13 +48,16 @@
     "feathers-errors": "^2.9.2",
     "feathers-hooks": "^2.1.1",
     "feathers-hooks-common": "^3.10.0",
+    "feathers-knex": "^2.9.0",
     "feathers-rest": "^1.8.0",
     "feathers-socketio": "^2.0.0",
     "graphql": "^0.11.7",
     "graphql-server-express": "^1.2.0",
     "graphql-tools": "^2.6.1",
     "helmet": "^3.9.0",
+    "knex": "^0.13.0",
     "serve-favicon": "^2.4.5",
+    "sqlite3": "^3.1.13",
     "winston": "^2.4.0"
   },
   "devDependencies": {

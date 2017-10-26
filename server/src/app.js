@@ -19,6 +19,7 @@ const services = require('./services');
 const appHooks = require('./app.hooks');
 
 const authentication = require('./authentication');
+const knex = require('./database');
 
 const app = feathers();
 
@@ -36,6 +37,8 @@ app.use('/', feathers.static(app.get('public')));
 
 // Set up Plugins and providers
 app.configure(hooks());
+app.configure(knex);
+const db = app.get('db');
 app.configure(rest());
 app.configure(socketio());
 

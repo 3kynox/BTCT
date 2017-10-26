@@ -29,5 +29,11 @@
       "usernameField": "username",
       "passwordField": "password"
     }
+  },
+  "sqlite": {
+    "client": "sqlite3",
+    "connection": {
+      "filename": "../../data/db.sqlite"
+    }
   }
 }
