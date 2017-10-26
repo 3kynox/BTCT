@@ -6,6 +6,12 @@
     "default": 10,
     "max": 50
   },
+  "sqlite": {
+    "client": "sqlite3",
+    "connection": {
+      "filename": "../../data/db.sqlite"
+    }
+  },
   "authentication": {
     "secret": "47706c5b78cc8d021958ce6e8776cb73af6689c640908990c18970f9114b3628ce7c7e5614531f5002fd05bd96c59db371e3ca4382ddfed91c6ce82f71c7c19325b4b2b9fd4f9c97f8402d3bb98b3c696eba074f7de7e9ecbfbba3626c17de66b0ef716e0d0ed7cf0615f25a0edb2c6be9f6d3c392f54dc167c30d050e85d15ba1ec043aa959c59777f3bf8fd788a59e06a4d75bbc27458efc0b517e46b2970475e7f3989ee3dab2c87e62cea9611a0620c5b19f1a822013bea62969c6d6a0ef4ee1406d9c6441f263e9b1afd47bba4e87b7cd336fc7f1d5e82dcc4aa3e19721f6fad857fb31c33a35cc6e2f19f6d829c209dd97e13d0ffc9128c15c46a9549a",
     "strategies": [
@@ -28,12 +34,6 @@
       "entity": "user",
       "usernameField": "username",
       "passwordField": "password"
-    }
-  },
-  "sqlite": {
-    "client": "sqlite3",
-    "connection": {
-      "filename": "../../data/db.sqlite"
     }
   }
 }
