@@ -10,17 +10,11 @@ const Schema = require('./graphql.schema');
 
 module.exports = function () {
   const app = this;
-  // const paginate = app.get('paginate');
 
   const executableSchema = makeExecutableSchema({
       typeDefs: Schema,
       resolvers: Resolvers.call(app)
   });
-
-  // const options = {
-  //   name: 'graphql',
-  //   paginate
-  // };
 
   // Initialize our service with any options it requires
   app.use('/graphql', graphql((req) => {
