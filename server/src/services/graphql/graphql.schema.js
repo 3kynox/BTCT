@@ -8,6 +8,36 @@ type User {
   updatedAt: String
 }
 
+type Indicator {
+  id: String!
+  Exchange: String!
+  Pair: String!
+  Base_balance: String
+  Quote_balance: String
+  On_Orders: String
+  Bid: String
+  Ask: String
+  Buy: String
+  Sell: String
+  Break_point: String
+  Bought_avg: String
+  Status_message: String
+  Bought_volume: String
+  Price: String
+  Sold_volume: String
+  Averaged_down_volume: String
+  Open_order: String
+  Last_order: String
+  EMA1: String
+  EMA2: String
+  LowBB: String
+  HighBB: String
+  SMA: String
+  Status_message1: String
+  Status_message2: String
+  GB_status: String
+}
+
 type AuthPayload {
   accessToken: String # JSON Web Token
   data: User
@@ -17,6 +47,8 @@ type AuthPayload {
 type RootQuery {
   user(id: String!): User
   users: [User]
+  indicator(id: String!): Indicator
+  indicators: [Indicator]
 }
 
 # this schema allows the following mutations:

@@ -6,6 +6,7 @@ module.exports = function Resolvers() {
   const app = this;
 
   const Users = app.service('users');
+  const Indicators = app.service('indicators');
 
   const localRequest = request.defaults({
     baseUrl: `http://${app.get('host')}:${app.get('port')}`,
@@ -28,6 +29,16 @@ module.exports = function Resolvers() {
 
       user(root, { id }, context) {
         return Users.get(id, context);
+      },
+
+      indicators(root, args, context) {
+        return Indicators
+          .find(context)
+          .then(results => results.data);
+      },
+
+      indicator(root, { id }, context) {
+          return Indicators.get(id, context);
       },
     },
 
