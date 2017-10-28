@@ -4,6 +4,8 @@ type User {
   id: String! # the ! means that every User object _must_ have an id
   username: String!
   permissions: String
+  createdAt: String
+  updatedAt: String
 }
 
 type AuthPayload {
