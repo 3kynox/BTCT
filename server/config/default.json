@@ -22,7 +22,7 @@
     "service": "users",
     "jwt": {
       "header": {
-        "typ": "access"
+        "type": "access"
       },
       "audience": "https://yourdomain.com",
       "subject": "anonymous",

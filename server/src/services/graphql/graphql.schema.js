@@ -7,7 +7,7 @@ type User {
 }
 
 type AuthPayload {
-  token: String # JSON Web Token
+  accessToken: String # JSON Web Token
   data: User
 }
 
@@ -20,6 +20,7 @@ type RootQuery {
 # this schema allows the following mutations:
 type RootMutation {
   logIn (
+    strategy: String!
     username: String!
     password: String!
   ): AuthPayload
