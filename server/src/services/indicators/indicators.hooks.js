@@ -1,9 +1,16 @@
 const { authenticate } = require('feathers-authentication').hooks;
+const { restrictToRoles } = require('feathers-authentication-hooks');
 
 module.exports = {
   before: {
     all: [ authenticate('jwt') ],
-    find: [],
+    find: [
+      restrictToRoles({
+        roles: ['admin', 'user'],
+        fieldName: 'permissions',
+        idField: 'id'
+      })
+    ],
     get: [],
     create: [],
     update: [],

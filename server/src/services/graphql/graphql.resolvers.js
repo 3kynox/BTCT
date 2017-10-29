@@ -39,8 +39,16 @@ module.exports = function Resolvers() {
 
       pairIndicators(root, { Exchange, Pair }, context) {
         return Indicators
-          .find({query:{Exchange: Exchange, Pair: Pair}})
+          .find({query:{Exchange:Exchange, Pair:Pair}}, context)
           .then(results => results.data);
+      },
+
+      pairIndicators(root, { Exchange, Pair }, context) {
+        return Indicators
+          .find(context)
+          .then(results => Indicators
+            .find({query:{Exchange:Exchange, Pair:Pair}})
+            .then(results => results.data));
       },
     },
 
