@@ -10,7 +10,6 @@ module.exports = function (app) {
   db.schema.hasTable('table_store').then(exists => {
     if(!exists) {
       db.schema.createTable('table_store', table => {
-        table.increments('id');
           table.string('Exchange');
           table.string('Pair');
           table.string('Base_balance');

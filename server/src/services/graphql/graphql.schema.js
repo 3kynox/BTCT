@@ -9,7 +9,6 @@ type User {
 }
 
 type Indicator {
-  id: String!
   Exchange: String!
   Pair: String!
   Base_balance: String
@@ -47,8 +46,8 @@ type AuthPayload {
 type RootQuery {
   user(id: String!): User
   users: [User]
-  indicator(id: String!): Indicator
   indicators: [Indicator]
+  pairIndicators(Exchange: String!, Pair: String!): [Indicator]
 }
 
 # this schema allows the following mutations:

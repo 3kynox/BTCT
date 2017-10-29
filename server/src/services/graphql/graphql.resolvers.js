@@ -37,8 +37,8 @@ module.exports = function Resolvers() {
           .then(results => results.data);
       },
 
-      indicator(root, { id }, context) {
-          return Indicators.get(id, context);
+      pairIndicators(root, { Exchange, Pair }, context) {
+        return Indicators.find({query:{Exchange: Exchange, Pair: Pair}});
       },
     },
 
@@ -47,7 +47,7 @@ module.exports = function Resolvers() {
         return localRequest({
           uri: '/authentication',
           method: 'POST',
-          body: {strategy: strategy, username: username, password: password}
+          body: { strategy: strategy, username: username, password: password }
         });
       }
     }
