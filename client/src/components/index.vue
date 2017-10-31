@@ -15,7 +15,6 @@
         >
           Go to Dashboard
         </q-btn>
-
         <q-btn
           color="secondary"
           push
@@ -49,7 +48,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="styl">
+<style lang="stylus">
 .index-page
   .banner
     height 50vh
