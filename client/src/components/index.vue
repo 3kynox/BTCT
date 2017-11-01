@@ -6,6 +6,11 @@
     <div class="text-center">
       <div class="card bg-grey-10 shadow-4 column no-wrap flex-center group">
         <img src="~assets/gb-logo.png">
+
+        <p>
+          {{ auth.logIn }}
+        </p>
+
         <q-btn
           color="cyan-10"
           push
@@ -38,9 +43,27 @@
 </template>
 
 <script>
+import gql from 'graphql-tag'
 import { QBtn } from 'quasar'
 
+const authQuery = gql`
+  {
+    mutation {
+      logIn(strategy:"local", username:"admin", password:"admin") {
+        accessToken
+      }
+    }
+  }`
+
 export default {
+  data: () => ({
+    auth: ''
+  }),
+  apollo: {
+    auth: {
+      query: authQuery
+    }
+  },
   components: {
     QBtn
   }
