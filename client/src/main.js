@@ -13,7 +13,7 @@ require(`quasar/dist/quasar.ie.${__THEME}.css`)
 import Vue from 'vue'
 import Quasar from 'quasar'
 import router from './router'
-import api from './api'
+import apolloProvider from './api'
 
 Vue.config.productionTip = false
 Vue.use(Quasar) // Install Quasar Framework
@@ -30,6 +30,6 @@ import 'quasar-extras/animate'
 new Vue({
   el: '#q-app',
   router,
-  api,
+  apolloProvider,
   render: h => h(require('./App').default)
 })

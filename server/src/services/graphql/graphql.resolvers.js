@@ -33,7 +33,7 @@ module.exports = function Resolvers() {
 
       indicators(root, args, context) {
         return Indicators
-          .find()
+          .find(context)
           .then(results => results.data);
       },
 
