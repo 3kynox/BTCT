@@ -12,6 +12,7 @@
             dark
             icon="supervisor_account"
             label="Username"
+            style="-webkit-text-fill-color: white !important;"
           >
             <q-input dark color="yellow" v-model="username" />
           </q-field>
@@ -20,6 +21,7 @@
               icon="lock"
               label="Password"
               type="password"
+              style="-webkit-text-fill-color: white !important;"
             >
               <q-input dark type="password" color="yellow" v-model="password" />
             </q-field>
@@ -48,7 +50,7 @@
 </template>
 
 <script>
-import { QBtn, QField, QInput } from 'quasar'
+import { QBtn, QField, QInput, Toast } from 'quasar'
 import logIn from '../graphql/logIn.gql'
 
 export default {
@@ -66,9 +68,10 @@ export default {
         }
       }).then((response) => {
         localStorage.setItem('token', response.data.logIn.accessToken)
+        Toast.create.positive('You are now logged in')
         return this.$router.push('/dashboard')
-      }).catch((error) => {
-        console.log(error)
+      }).catch(_ => {
+        Toast.create.negative('Cannot sign in, please check your username or password')
       })
     }
   },
