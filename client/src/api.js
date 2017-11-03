@@ -7,7 +7,7 @@ import VueApollo from 'vue-apollo'
 
 const httpLink = new HttpLink({
   // You should use an absolute URL here
-  uri: 'http://localhost:3030/graphql'
+  uri: 'http://noxen.net:3030/graphql'
 })
 
 const middlewareLink = new ApolloLink((operation, forward) => {

@@ -6,9 +6,35 @@
       <p class="caption">
         Dashboard page
       </p>
-      <p>
-        dataReturn: {{ pairIndicators[0].Exchange }}
-      </p>
+      <div v-for="(value, key) in pairIndicators">
+        {{ key }}:
+        {{ value.Exchange }} -
+        {{ value.Pair }} -
+        {{ value.Base_balance }} -
+        {{ value.Quote_balance }} -
+        {{ value.On_Orders }} -
+        {{ value.Bid }} -
+        {{ value.Ask }} -
+        {{ value.Sell }} -
+        {{ value.Break_point }} -
+        {{ value.Bought_avg }} -
+        {{ value.Status_message }} -
+        {{ value.Bought_volume }} -
+        {{ value.Price }} -
+        {{ value.Sold_volume }} -
+        {{ value.Averaged_down_volume }} -
+        {{ value.Open_order }} -
+        {{ value.Last_order }} -
+        {{ value.EMA1 }} -
+        {{ value.EMA2 }} -
+        {{ value.LowBB }} -
+        {{ value.HighBB }} -
+        {{ value.SMA }} -
+        {{ value.Status_message1 }} -
+        {{ value.Status_message2 }} -
+        {{ value.GB_status }}
+        <br><br>
+      </div>
     </div>
   </div>
 </template>
@@ -21,7 +47,29 @@ const indicatorsQuery = gql`
     pairIndicators(Exchange: "poloniex", Pair: "BTC_VIA") {
       Exchange,
       Pair,
-      Base_balance
+      Base_balance,
+      Quote_balance,
+      On_Orders,
+      Bid,
+      Ask,
+      Sell,
+      Break_point,
+      Bought_avg,
+      Status_message,
+      Bought_volume,
+      Price,
+      Sold_volume,
+      Averaged_down_volume,
+      Open_order,
+      Last_order,
+      EMA1,
+      EMA2,
+      LowBB,
+      HighBB,
+      SMA,
+      Status_message1,
+      Status_message2,
+      GB_status
     }
   }
 `

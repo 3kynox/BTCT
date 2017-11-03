@@ -7,27 +7,32 @@
       <div class="card bg-grey-10 shadow-4 column no-wrap flex-center group">
         <img src="~assets/gb-logo.png">
 
-        <p>
-          <button @click="logIn('admin', 'admin')">Login</button>
-        </p>
+        <div class="dark-example">
+          <q-field
+            dark
+            icon="supervisor_account"
+            label="Username"
+          >
+            <q-input dark color="yellow" v-model="username" />
+          </q-field>
+            <q-field
+              dark
+              icon="lock"
+              label="Password"
+              type="password"
+            >
+              <q-input dark type="password" color="yellow" v-model="password" />
+            </q-field>
+        </div>
 
         <q-btn
           color="cyan-10"
           push
-          @click="$router.push('/dashboard')"
+          @click="logIn(username, password)"
           class="full-width"
           icon="layers"
         >
-          Go to Dashboard
-        </q-btn>
-        <q-btn
-          color="secondary"
-          push
-          class="full-width"
-          @click="$router.push('/config')"
-          icon="launch"
-        >
-          Configure Gunbot
+          Login to Dashboard
         </q-btn>
 
         <a
@@ -44,7 +49,7 @@
 
 <script>
 import gql from 'graphql-tag'
-import { QBtn } from 'quasar'
+import { QBtn, QField, QInput } from 'quasar'
 
 const logInQuery = gql`
   mutation logIn($username: String!, $password: String!) {
@@ -55,6 +60,10 @@ const logInQuery = gql`
 `
 
 export default {
+  data: () => ({
+    username: '',
+    password: ''
+  }),
   methods: {
     logIn (username, password) {
       this.$apollo.mutate({
@@ -72,7 +81,9 @@ export default {
     }
   },
   components: {
-    QBtn
+    QBtn,
+    QField,
+    QInput
   }
 }
 </script>
