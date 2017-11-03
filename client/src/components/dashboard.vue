@@ -6,13 +6,35 @@
       <p class="caption">
         Dashboard page
       </p>
+      <p>
+        dataReturn: {{ pairIndicators[0].Exchange }}
+      </p>
     </div>
   </div>
 </template>
 
 <script>
+import gql from 'graphql-tag'
+
+const indicatorsQuery = gql`
+  {
+    pairIndicators(Exchange: "poloniex", Pair: "BTC_VIA") {
+      Exchange,
+      Pair,
+      Base_balance
+    }
+  }
+`
 
 export default {
+  data: () => ({
+    pairIndicators: ''
+  }),
+  apollo: {
+    pairIndicators: {
+      query: indicatorsQuery
+    }
+  }
 }
 </script>
 

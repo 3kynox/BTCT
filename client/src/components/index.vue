@@ -8,7 +8,7 @@
         <img src="~assets/gb-logo.png">
 
         <p>
-          {{ indicators[0].Exchange }}
+          <button @click="logIn('admin', 'admin')">Login</button>
         </p>
 
         <q-btn
@@ -46,22 +46,29 @@
 import gql from 'graphql-tag'
 import { QBtn } from 'quasar'
 
-const indicatorsQuery = gql`
-  {
-    indicators {
-      Exchange
-      Pair
-      Base_balance
+const logInQuery = gql`
+  mutation logIn($username: String!, $password: String!) {
+    logIn(strategy: "local", username: $username, password: $password) {
+      accessToken
     }
-  }`
+  }
+`
 
 export default {
-  data: () => ({
-    indicators: ''
-  }),
-  apollo: {
-    indicators: {
-      query: indicatorsQuery
+  methods: {
+    logIn (username, password) {
+      this.$apollo.mutate({
+        mutation: logInQuery,
+        variables: {
+          username,
+          password
+        }
+      }).then((response) => {
+        localStorage.setItem('token', response.data.logIn.accessToken)
+        return this.$router.push('/dashboard')
+      }).catch((error) => {
+        console.log(error)
+      })
     }
   },
   components: {

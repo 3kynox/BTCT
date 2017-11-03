@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import { ApolloClient } from 'apollo-client'
+import { ApolloLink } from 'apollo-link'
 import { HttpLink } from 'apollo-link-http'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import VueApollo from 'vue-apollo'
@@ -9,9 +10,21 @@ const httpLink = new HttpLink({
   uri: 'http://localhost:3030/graphql'
 })
 
+const middlewareLink = new ApolloLink((operation, forward) => {
+  operation.setContext({
+    headers: {
+      authorization: localStorage.getItem('token') || null
+    }
+  })
+  return forward(operation)
+})
+
+// use with apollo-client
+const link = middlewareLink.concat(httpLink)
+
 // Create the apollo client
 const apolloClient = new ApolloClient({
-  link: httpLink,
+  link: link,
   cache: new InMemoryCache(),
   connectToDevTools: true
 })
