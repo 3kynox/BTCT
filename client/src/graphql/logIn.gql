@@ -1,0 +1,5 @@
+mutation logIn($username: String!, $password: String!) {
+  logIn(strategy: "local", username: $username, password: $password) {
+    accessToken
+  }
+}

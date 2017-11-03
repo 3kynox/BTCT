@@ -40,39 +40,7 @@
 </template>
 
 <script>
-import gql from 'graphql-tag'
-
-const indicatorsQuery = gql`
-  {
-    pairIndicators(Exchange: "poloniex", Pair: "BTC_VIA") {
-      Exchange,
-      Pair,
-      Base_balance,
-      Quote_balance,
-      On_Orders,
-      Bid,
-      Ask,
-      Sell,
-      Break_point,
-      Bought_avg,
-      Status_message,
-      Bought_volume,
-      Price,
-      Sold_volume,
-      Averaged_down_volume,
-      Open_order,
-      Last_order,
-      EMA1,
-      EMA2,
-      LowBB,
-      HighBB,
-      SMA,
-      Status_message1,
-      Status_message2,
-      GB_status
-    }
-  }
-`
+import pairIndicators from '../graphql/pairIndicators.gql'
 
 export default {
   data: () => ({
@@ -80,7 +48,11 @@ export default {
   }),
   apollo: {
     pairIndicators: {
-      query: indicatorsQuery
+      query: pairIndicators,
+      variables: {
+        exchange: 'poloniex',
+        pair: 'BTC_VIA'
+      }
     }
   }
 }

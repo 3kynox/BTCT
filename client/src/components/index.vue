@@ -48,16 +48,8 @@
 </template>
 
 <script>
-import gql from 'graphql-tag'
 import { QBtn, QField, QInput } from 'quasar'
-
-const logInQuery = gql`
-  mutation logIn($username: String!, $password: String!) {
-    logIn(strategy: "local", username: $username, password: $password) {
-      accessToken
-    }
-  }
-`
+import logIn from '../graphql/logIn.gql'
 
 export default {
   data: () => ({
@@ -67,7 +59,7 @@ export default {
   methods: {
     logIn (username, password) {
       this.$apollo.mutate({
-        mutation: logInQuery,
+        mutation: logIn,
         variables: {
           username,
           password
