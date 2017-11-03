@@ -72,8 +72,19 @@ export default {
         return this.$router.push('/dashboard')
       }).catch(_ => {
         Toast.create.negative('Cannot sign in, please check your username or password')
+        this.$router.push('/')
       })
+    },
+    isLoggedIn () {
+      const token = localStorage.getItem('token')
+
+      if (token) {
+        return this.$router.push('/dashboard')
+      }
     }
+  },
+  mounted: function () {
+    this.isLoggedIn()
   },
   components: {
     QBtn,
