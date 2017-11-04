@@ -1,16 +1,16 @@
 <template>
-  <div class="error-page window-height window-width bg-light column items-center no-wrap">
-    <div class="error-code bg-primary flex flex-center">
+  <div class="error-page window-height window-width column items-center no-wrap"  :style="{'background-image': `url(${require('../assets/layout/caffeine-strong-100x100.png')})`}">
+    <div class="error-code flex flex-center" :style="{'background-image': `url(${require('../assets/layout/caffeine-light-100x100.png')})`}">
       404
     </div>
     <div>
-      <div class="error-card shadow-4 bg-white column flex-center no-wrap">
+      <div class="error-card shadow-4 column flex-center no-wrap"  :style="{'background-image': `url(${require('../assets/layout/caffeine-strong-100x100.png')})`}">
         <q-icon name="error_outline" color="grey-5" />
-        <p class="caption text-center">Oops. Nothing here...</p>
+        <p class="caption text-center" style="color: #fff">Oops. Nothing here...</p>
         <p class="text-center group">
           <q-btn
             v-if="canGoBack"
-            color="primary"
+            color="cyan-10"
             push
             @click="goBack"
             icon="keyboard_arrow_left"
@@ -18,7 +18,7 @@
             Go back
           </q-btn>
           <q-btn
-            color="primary"
+            color="grey-8"
             push
             @click="$router.replace('/')"
             icon-right="home"

@@ -1,10 +1,8 @@
 <template>
-  <div class="index-page bg-grey-10 window-height window-width column items-center no-wrap">
-    <div class="banner bg-blue-grey-10 flex flex-center">
-      <img src="~assets/gb-logo-standalone.png">
-    </div>
+  <div class="index-page window-height window-width column items-center no-wrap" :style="{'background-image': `url(${require('../assets/layout/caffeine-strong-100x100.png')})`}">
+    <div class="banner flex flex-center" :style="{'background-image': `url(${require('../assets/layout/caffeine-light-100x100.png')})`}"></div>
     <div class="text-center">
-      <div class="card bg-grey-10 shadow-4 column no-wrap flex-center group">
+      <div class="card shadow-4 column no-wrap flex-center group" :style="{'background-image': `url(${require('../assets/layout/caffeine-strong-100x100.png')})`}">
         <img src="~assets/gb-logo.png">
 
         <div class="dark-example">
@@ -103,16 +101,15 @@ export default {
     font-size 30vmax
     color rgba(255, 255, 255, .2)
     overflow hidden
-    img
-      width 250px
   .card
     width 80vw
     max-width 500px
     padding 10px 25px
-    margin-top -90px
+    margin-top -150px
     border-radius 2px
     img
-      height 180px
+      width 90%
+      height 10%
 
 .ribbon
   width 12.1em

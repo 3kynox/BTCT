@@ -1,6 +1,6 @@
 <template>
   <div class="layout-padding page-dashboard">
-    <div class="showcase-top text-center">
+    <div class="showcase-top text-center" style="color: #fff;">
       <img src="~assets/gb-logo-standalone.png" />
 
       <p class="caption">

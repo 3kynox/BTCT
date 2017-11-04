@@ -1,6 +1,6 @@
 <template>
-  <q-layout ref="layout" view="Lhh lpr lFf" reveal>
-    <q-toolbar slot="header">
+  <q-layout ref="layout" view="Lhh lpr lFf" reveal :style="{'background-image': `url(${require('../assets/layout/caffeine-medium-100x100.png')})`}">
+    <q-toolbar slot="header" :style="{'background-image': `url(${require('../assets/layout/caffeine-strong-100x100.png')})`}" style="height: 120px; background: none;">
       <q-btn flat v-go-back.single="store.backRoute" class="cordova-only electron-only">
         <q-icon name="arrow_back" />
       </q-btn>
@@ -21,6 +21,7 @@
       slot="navigation"
       v-if="store.tabs.length > 0"
       :class="{'within-iframe-hide': !store.iframeTabs}"
+      :style="{'box-shadow': `none`, '-webkit-box-shadow': `none`, '-moz-box-shadow': `none` }"
     >
       <q-route-tab
         v-for="tab in store.tabs"
@@ -37,11 +38,11 @@
     <q-scroll-area
       slot="left"
       style="width: 100%; height: 100%;"
-      class="bg-grey-3"
+      :style="{'background-image': `url(${require('../assets/layout/caffeine-strong-100x100.png')})`}"
     >
-      <div class="row flex-center bg-white" style="width: 100%; height: 100px;">
-        <img src="~assets/gb-logo-standalone.png" style="height: 75px; width 75px;"/>
-        <div style="margin-left: 15px">
+      <div class="row flex-center" style="width: 100%; height: 120px;" :style="{'background-image': `url(${require('../assets/layout/caffeine-light-100x100.png')})`}">
+        <img src="~assets/gb-logo-standalone.png" height="80px" />
+        <div style="padding-left: 1em; color: white; text-overflow: ellipsis; font-weight: bold;">
           Gunbot v5.0.5.6
         </div>
       </div>
@@ -111,3 +112,11 @@ export default {
   }
 }
 </script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style lang="stylus">
+.layout-header
+  box-shadow none
+.layout-aside.fixed.on-layout
+  box-shadow none
+</style>
