@@ -15,7 +15,7 @@ let routes = [
   {path: '/', component: load('index')}
 ]
 
-let showcase = {
+let dashboard = {
   path: '/dashboard',
   component: load('layout'),
   children: [
@@ -32,7 +32,25 @@ let showcase = {
   ]
 }
 
-routes.push(showcase)
+let settings = {
+  path: '/settings',
+  component: load('layout'),
+  children: [
+    {
+      path: '',
+      component: load('settings'),
+      meta: {
+        title: 'Gunbot Settings',
+        hash: '/settings',
+        icon: 'layers',
+        backRoute: '/dashboard'
+      }
+    }
+  ]
+}
+
+routes.push(dashboard)
+routes.push(settings)
 routes.push({path: '*', component: load('404')})
 
 const Router = new VueRouter({

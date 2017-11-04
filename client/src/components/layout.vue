@@ -17,24 +17,6 @@
       </q-btn>
     </q-toolbar>
 
-    <q-tabs
-      slot="navigation"
-      v-if="store.tabs.length > 0"
-      :class="{'within-iframe-hide': !store.iframeTabs}"
-      :style="{'box-shadow': `none`, '-webkit-box-shadow': `none`, '-moz-box-shadow': `none` }"
-    >
-      <q-route-tab
-        v-for="tab in store.tabs"
-        :key="tab.hash"
-        slot="title"
-        :icon="tab.icon"
-        :to="`/dashboard${store.hash}/${tab.hash}`"
-        :label="tab.label"
-        exact
-        replace
-      />
-    </q-tabs>
-
     <q-scroll-area
       slot="left"
       style="width: 100%; height: 100%;"
@@ -57,7 +39,17 @@
           <q-item-main label="Dashboard" />
           <q-item-side right icon="chevron_right" />
         </q-side-link>
-        <q-item-separator />
+        <!--<q-item-separator />-->
+        <q-side-link
+          item
+          to="/settings"
+          exact
+          replace
+        >
+          <q-item-side icon="build" />
+          <q-item-main label="Settings" />
+          <q-item-side right icon="chevron_right" />
+        </q-side-link>
       </q-list>
     </q-scroll-area>
 
