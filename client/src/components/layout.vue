@@ -28,18 +28,28 @@
           Gunbot v5.0.5.6
         </div>
       </div>
-      <q-list no-border>
+      <q-list no-border style="color: #fff">
         <q-side-link
           item
           to="/dashboard"
           exact
           replace
         >
-          <q-item-side icon="home" />
+          <q-item-side icon="home" style="color: #fff" />
           <q-item-main label="Dashboard" />
-          <q-item-side right icon="chevron_right" />
+          <q-item-side right icon="chevron_right" style="color: #fff" />
         </q-side-link>
         <!--<q-item-separator />-->
+        <q-collapsible indent icon="event" color="white" label="Configs">
+          <q-side-link item to="/404">
+            <q-item-main label="Setup #1" />
+            <q-item-side right icon="chevron_right" style="color: #fff" />
+          </q-side-link>
+          <q-side-link item to="/404">
+            <q-item-main label="Setup #2" />
+            <q-item-side right icon="chevron_right" style="color: #fff" />
+          </q-side-link>
+        </q-collapsible>
         <q-side-link
           item
           to="/settings"
@@ -60,6 +70,7 @@
 <script>
 import store from './store'
 import {
+  QCollapsible,
   QScrollArea,
   QList,
   QSideLink,
@@ -79,6 +90,7 @@ import {
 
 export default {
   components: {
+    QCollapsible,
     QScrollArea,
     QList,
     QSideLink,
@@ -111,4 +123,6 @@ export default {
   box-shadow none
 .layout-aside.fixed.on-layout
   box-shadow none
+.q-item-icon
+  color white
 </style>
